@@ -24,9 +24,9 @@ class SplashScreen extends Component {
           <Image source={images.logo} />
         </Box>
         <Box mb="sm">
-          <Text size="xl">
+          <Text size="2xl">
             In
-            <Text color="green" size="xl">
+            <Text color="green" size="2xl">
               Store
             </Text>
           </Text>

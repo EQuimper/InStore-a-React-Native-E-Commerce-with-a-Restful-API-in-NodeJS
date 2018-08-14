@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Box, Text } from 'react-native-design-utility';
-import { Image } from 'react-native';
 
-import { images } from '../constants/images';
+import OnboardingLogo from '../commons/OnboardingLogo';
 
 class SplashScreen extends Component {
   state = {};
@@ -20,18 +19,7 @@ class SplashScreen extends Component {
   render() {
     return (
       <Box f={1} center>
-        <Box mb="sm">
-          <Image source={images.logo} />
-        </Box>
-        <Box mb="sm">
-          <Text size="2xl">
-            In
-            <Text color="green" size="2xl">
-              Store
-            </Text>
-          </Text>
-        </Box>
-        <Text size="sm">easy grocery shopping.</Text>
+        <OnboardingLogo />
       </Box>
     );
   }

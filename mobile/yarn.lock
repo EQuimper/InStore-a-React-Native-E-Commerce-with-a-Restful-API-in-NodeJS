@@ -432,7 +432,7 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
-"@expo/vector-icons@^6.3.1":
+"@expo/vector-icons@6.3.1", "@expo/vector-icons@^6.3.1":
   version "6.3.1"
   resolved "https://registry.yarnpkg.com/@expo/vector-icons/-/vector-icons-6.3.1.tgz#ffb97cc2343e4a330b44ce3063ee7c8571a6a50d"
   dependencies:
@@ -3597,9 +3597,9 @@ react-native-branch@2.2.5:
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/react-native-branch/-/react-native-branch-2.2.5.tgz#4074dd63b4973e6397d9ce50e97b57c77a518e9d"
 
-react-native-design-utility@^0.0.11:
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/react-native-design-utility/-/react-native-design-utility-0.0.11.tgz#27b0d6cfae3ab45e6b24e68783e317410d914974"
+react-native-design-utility@^0.0.12:
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/react-native-design-utility/-/react-native-design-utility-0.0.12.tgz#ce8db612bf6a07df97378c4820dbf95f8cec27c1"
   dependencies:
     fs-extra "^7.0.0"
     lodash.get "^4.4.2"

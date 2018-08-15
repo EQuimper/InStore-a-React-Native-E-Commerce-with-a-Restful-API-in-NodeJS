@@ -17,11 +17,11 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "facebookAppId": "240536953465222",
+    "facebookScheme": "fb240536953465222"
   }
 }

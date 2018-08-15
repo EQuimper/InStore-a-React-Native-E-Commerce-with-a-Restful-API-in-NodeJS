@@ -3597,9 +3597,9 @@ react-native-branch@2.2.5:
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/react-native-branch/-/react-native-branch-2.2.5.tgz#4074dd63b4973e6397d9ce50e97b57c77a518e9d"
 
-react-native-design-utility@^0.0.12:
-  version "0.0.12"
-  resolved "https://registry.yarnpkg.com/react-native-design-utility/-/react-native-design-utility-0.0.12.tgz#ce8db612bf6a07df97378c4820dbf95f8cec27c1"
+react-native-design-utility@^0.0.14:
+  version "0.0.14"
+  resolved "https://registry.yarnpkg.com/react-native-design-utility/-/react-native-design-utility-0.0.14.tgz#36e732c6460a7c7137e6465edff3b857f3c3f349"
   dependencies:
     fs-extra "^7.0.0"
     lodash.get "^4.4.2"

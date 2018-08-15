@@ -6,14 +6,15 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "debug": "open 'rndebugger://set-debugger-loc?host=localhost&port=19001'"
   },
   "dependencies": {
     "@expo/vector-icons": "6.3.1",
     "expo": "^29.0.0",
     "react": "16.3.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-29.0.0.tar.gz",
-    "react-native-design-utility": "^0.0.12",
+    "react-native-design-utility": "^0.0.14",
     "react-navigation": "2.11.2"
   }
 }

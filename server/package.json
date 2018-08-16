@@ -1,0 +1,23 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon --exec babel-node src/index.js"
+  },
+  "dependencies": {
+    "axios": "0.18.0",
+    "express": "4.16.3",
+    "mongoose": "5.2.8",
+    "morgan": "1.9.0",
+    "yup": "0.26.2"
+  },
+  "devDependencies": {
+    "babel-core": "6.26.3",
+    "babel-env": "2.4.1",
+    "babel-plugin-transform-object-rest-spread": "6.26.0",
+    "cross-env": "5.2.0",
+    "nodemon": "1.18.3"
+  }
+}

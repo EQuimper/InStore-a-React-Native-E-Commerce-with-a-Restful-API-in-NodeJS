@@ -2,6 +2,7 @@ import * as Yup from 'yup';
 
 import { PROVIDER_ENUM } from './customer.model';
 import { AuthProvider } from '../../services/authProvider';
+import { getOrCreateCustomer } from './customer';
 
 export const create = async (req, res) => {
   const { token, provider } = req.body;
@@ -16,11 +17,19 @@ export const create = async (req, res) => {
   try {
     await bodySchema.validate({ token, provider });
 
-    if (provider === 'FACEBOOK') {
-      const data = await AuthProvider.Facebook.authAsync(token);
+    let data;
 
-      res.status(201).json(data);
+    if (provider === 'FACEBOOK') {
+      data = await AuthProvider.Facebook.authAsync(token);
+    } else if (provider === 'GOOGLE') {
+      data = await AuthProvider.Google.authAsync(token);
+    } else {
+      res.sendStatus(400);
     }
+
+    const customer = await getOrCreateCustomer(data, provider);
+
+    res.status(200).json(customer);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }

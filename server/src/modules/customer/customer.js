@@ -1,5 +1,28 @@
 import Customer from './customer.model';
 import { buildCustomerInfo } from './buildCustomerInfo';
+import { AuthServices } from '../../services/Auth';
+
+export const customerAuth = async (req, res, next) => {
+  const token = AuthServices.getTokenFromHeaders(req);
+
+  if (!token) {
+    req.user = null;
+
+    return res.sendStatus(401);
+  }
+
+  const customer = await Customer.findById(token.id);
+
+  if (!customer) {
+    req.user = null;
+
+    return res.sendStatus(401);
+  }
+
+  req.user = customer;
+
+  return next();
+};
 
 export const getOrCreateCustomer = async (info, providerName) => {
   const customerInfo = buildCustomerInfo(info, providerName);

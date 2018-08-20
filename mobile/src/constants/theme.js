@@ -73,7 +73,9 @@ const theme = {
       normal: 1.5,
       large: 2,
     },
-    font: null,
+    fonts: {
+      base: null,
+    },
   },
   color,
   space: {
@@ -91,6 +93,13 @@ const theme = {
     base: 14,
     lg: 20,
     xl: 30,
+  },
+  opacity: {
+    none: 0,
+    low: 0.3,
+    demi: 0.5,
+    high: 0.8,
+    base: 1,
   },
   shadows: [
     {

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Box, Text } from 'react-native-design-utility';
 
 import OnboardingLogo from '../commons/OnboardingLogo';
+import { NavigationService } from '../api/NavigationService';
 
 class SplashScreen extends Component {
   state = {};

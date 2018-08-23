@@ -12,7 +12,7 @@
   "dependencies": {
     "@expo/vector-icons": "6.3.1",
     "expo": "^29.0.0",
-    "mobx": "5.0.3",
+    "mobx": "4.3.2",
     "mobx-react": "5.2.5",
     "mobx-state-tree": "3.2.1",
     "react": "16.3.1",

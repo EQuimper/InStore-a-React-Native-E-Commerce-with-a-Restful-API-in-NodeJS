@@ -2,11 +2,11 @@ const color = {
   black: '#212121',
 
   greyDarkest: '#24242',
-  greyDarker: '#616161',
+  greyDarker: '#707070',
   greyDark: '#8E8E93',
   grey: '#9e9e9e',
   greyLight: '#bdbdbd',
-  greyLighter: '#e0e0e0',
+  greyLighter: '#F5F5F5',
   greyLightest: '#eeeeee',
 
   white: '#fff',

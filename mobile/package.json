@@ -17,7 +17,7 @@
     "mobx-state-tree": "3.2.1",
     "react": "16.3.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-29.0.0.tar.gz",
-    "react-native-design-utility": "^0.0.25",
+    "react-native-design-utility": "^0.0.28",
     "react-navigation": "2.11.2",
     "wretch": "1.4.1"
   },

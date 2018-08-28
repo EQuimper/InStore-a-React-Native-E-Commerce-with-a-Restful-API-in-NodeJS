@@ -10,7 +10,7 @@ import { GoogleApi } from '../api/Google';
 
 const BoxAnimated = Animated.createAnimatedComponent(Box);
 
-@inject('currentUser')
+@inject('authStore')
 class LoginScreen extends Component {
   state = {
     opacity: new Animated.Value(0),
@@ -41,7 +41,7 @@ class LoginScreen extends Component {
     try {
       const token = await GoogleApi.loginAsync();
 
-      await this.props.currentUser.login(token, 'GOOGLE');
+      await this.props.authStore.login(token, 'GOOGLE');
     } catch (error) {
       console.log('error', error);
     }

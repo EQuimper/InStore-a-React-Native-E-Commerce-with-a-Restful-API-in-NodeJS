@@ -10,6 +10,11 @@ export const ShoppingCartStore = types
     get totalProducts() {
       return self.products.length;
     },
+    get totalAmount() {
+      return self.products
+        .reduce((acc, current) => acc + parseFloat(current.totalPrice), 0)
+        .toFixed(2);
+    },
   }))
   .actions(self => ({
     addProduct(product) {

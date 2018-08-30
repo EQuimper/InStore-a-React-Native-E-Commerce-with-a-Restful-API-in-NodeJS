@@ -1,5 +1,5 @@
 import React from 'react';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, UIManager } from 'react-native';
 import { UtilityThemeProvider, Box } from 'react-native-design-utility';
 import { Provider } from 'mobx-react/native';
 
@@ -8,6 +8,9 @@ import { images, tabBarIcons } from './src/constants/images';
 import { cacheImages } from './src/utils/cacheImages';
 import { theme } from './src/constants/theme';
 import { store } from './src/stores';
+
+UIManager.setLayoutAnimationEnabledExperimental &&
+  UIManager.setLayoutAnimationEnabledExperimental(true);
 
 export default class App extends React.Component {
   state = {

@@ -14,7 +14,7 @@
     "expo": "^29.0.0",
     "mobx": "4.3.2",
     "mobx-react": "5.2.5",
-    "mobx-state-tree": "3.2.1",
+    "mobx-state-tree": "3.2.2",
     "react": "16.3.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-29.0.0.tar.gz",
     "react-native-design-utility": "^0.0.28",

@@ -12,6 +12,7 @@ import { Feather } from '@expo/vector-icons';
 
 import { productImgs } from '../constants/images';
 import { theme } from '../constants/theme';
+import QtyHover from './QtyHover';
 
 const ANIM_DURATION = 200;
 
@@ -22,7 +23,6 @@ class ProductCard extends Component {
   state = {
     isHover: false,
     cardOpacity: new Animated.Value(1),
-    qtyCardOpacity: new Animated.Value(0),
   };
 
   handlePlusPress = () => {
@@ -54,29 +54,17 @@ class ProductCard extends Component {
   };
 
   fadeIn = () => {
-    Animated.parallel([
-      Animated.timing(this.state.qtyCardOpacity, {
-        toValue: 1,
-        duration: ANIM_DURATION,
-      }).start(),
-      Animated.timing(this.state.cardOpacity, {
-        toValue: 0.4,
-        duration: ANIM_DURATION,
-      }).start(),
-    ]);
+    Animated.timing(this.state.cardOpacity, {
+      toValue: 0.4,
+      duration: ANIM_DURATION,
+    }).start();
   };
 
   fadeOut = () => {
-    Animated.parallel([
-      Animated.timing(this.state.qtyCardOpacity, {
-        toValue: 0,
-        duration: ANIM_DURATION,
-      }).start(),
-      Animated.timing(this.state.cardOpacity, {
-        toValue: 1,
-        duration: ANIM_DURATION,
-      }).start(),
-    ]);
+    Animated.timing(this.state.cardOpacity, {
+      toValue: 1,
+      duration: ANIM_DURATION,
+    }).start();
   };
 
   render() {
@@ -132,30 +120,13 @@ class ProductCard extends Component {
           </TouchableOpacity>
         )}
         {isHover && (
-          <BoxAnimated
-            shadow={0}
-            bg="white"
-            position="absolute"
-            style={{ top: 10, right: 10, left: 10, zIndex: 99 }}
-            radius={6}
-            o={qtyCardOpacity}
-          >
-            <Box dir="row" align="center" justify="between" p="xs">
-              {product.cartQty > 1 ? (
-                <TouchableOpacity onPress={this.handleDec}>
-                  <Feather name="minus" color={theme.color.green} size={20} />
-                </TouchableOpacity>
-              ) : (
-                <TouchableOpacity onPress={this.handleRemove}>
-                  <Feather name="trash-2" color={theme.color.green} size={20} />
-                </TouchableOpacity>
-              )}
-              <Text>{product.cartQty}</Text>
-              <TouchableOpacity onPress={this.handleInc}>
-                <Feather name="plus" color={theme.color.green} size={20} />
-              </TouchableOpacity>
-            </Box>
-          </BoxAnimated>
+          <QtyHover
+            qty={product.cartQty}
+            handleRemove={this.handleRemove}
+            handleInc={this.handleInc}
+            handleDec={this.handleDec}
+            containerStyle={{ top: 10, right: 10, left: 10, zIndex: 99 }}
+          />
         )}
       </Box>
     );

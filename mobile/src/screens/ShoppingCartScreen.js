@@ -19,9 +19,9 @@ class ShoppingCartScreen extends Component {
   keyExtractor = item => String(item.id);
 
   renderList = () => {
-    const { products } = this.props.shoppingCartStore;
+    const { shoppingCartStore } = this.props;
 
-    if (products.length === 0) {
+    if (shoppingCartStore.totalProducts === 0) {
       return (
         <Box center f={1}>
           <Text>Cart Empty</Text>
@@ -29,12 +29,15 @@ class ShoppingCartScreen extends Component {
       );
     }
 
+    console.log('products', shoppingCartStore.products);
+    console.log('productsList', shoppingCartStore.productsList);
+
     return (
       <FlatList
-        data={products}
+        data={shoppingCartStore.productsList}
         renderItem={this.renderItem}
         keyExtractor={this.keyExtractor}
-        extraData={products}
+        extraData={shoppingCartStore}
       />
     );
   };

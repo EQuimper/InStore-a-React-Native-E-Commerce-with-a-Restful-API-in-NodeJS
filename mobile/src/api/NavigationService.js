@@ -34,6 +34,20 @@ function reset({ actions, index }) {
   });
 }
 
+function getCurrentRouteName(navigationState) {
+  if (!navigationState) {
+    return null;
+  }
+
+  const route = navigationState.routes[navigationState.index];
+
+  if (route.routes) {
+    return getCurrentRouteName(route);
+  }
+
+  return route.routeName;
+}
+
 export const NavigationService = {
   navigate,
   setTopLevelNavigator,
@@ -41,6 +55,7 @@ export const NavigationService = {
   popToTop,
   reset,
   navigator: _navigator,
+  getCurrentRouteName,
 };
 
 window.NavigationService = NavigationService;

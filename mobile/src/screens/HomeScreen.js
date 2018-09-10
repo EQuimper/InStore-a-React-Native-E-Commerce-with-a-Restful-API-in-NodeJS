@@ -5,6 +5,7 @@ import { Box, Text } from 'react-native-design-utility';
 import CategoryCard from '../components/CategoryCard';
 import { theme } from '../constants/theme';
 import DealCaroussel from '../components/DealCaroussel';
+import ProfileBtn from '../commons/ProfileBtn';
 
 const categories = [
   {
@@ -33,6 +34,7 @@ const NUM_COLUMNS = 3;
 class HomeScreen extends Component {
   static navigationOptions = {
     title: 'InStore',
+    headerLeft: <ProfileBtn />,
   };
 
   state = {};

@@ -4,14 +4,19 @@ import { Box, Text } from 'react-native-design-utility';
 import { inject, observer } from 'mobx-react/native';
 
 import CartItem from '../components/CartItem';
+import CloseBtn from '../commons/CloseBtn';
 import { theme } from '../constants/theme';
 
 @inject('shoppingCartStore')
 @observer
 class ShoppingCartScreen extends Component {
-  static navigationOptions = {
+  static navigationOptions = ({ navigation }) => ({
     title: 'My Cart',
-  };
+    headerLeft: (
+      <CloseBtn left size={25} onPress={() => navigation.goBack(null)} />
+    ),
+  });
+
   state = {};
 
   renderItem = ({ item }) => <CartItem product={item} />;

@@ -52,11 +52,39 @@ const ProfileStack = createStackNavigator(
     Settings: {
       getScreen: () => require('./SettingsScreen').default,
     },
+    Addresses: {
+      getScreen: () => require('./AddressesScreen').default,
+    },
   },
   {
     navigationOptions: {
+      headerBackTitle: null,
+      headerTintColor: theme.color.green,
+      headerStyle: {
+        backgroundColor: theme.color.white,
+      },
       headerTitleStyle: {
-        fontWeight: '400',
+        color: theme.color.black,
+      },
+    },
+  },
+);
+
+const AddressFormStack = createStackNavigator(
+  {
+    AddressForm: {
+      getScreen: () => require('./AddressFormScreen').default,
+    },
+  },
+  {
+    navigationOptions: {
+      headerBackTitle: null,
+      headerTintColor: theme.color.green,
+      headerStyle: {
+        backgroundColor: theme.color.white,
+      },
+      headerTitleStyle: {
+        color: theme.color.black,
       },
     },
   },
@@ -120,6 +148,7 @@ const MainNavigator = createStackNavigator(
   {
     Tab: TabNavigator,
     Profile: ProfileStack,
+    AddressForm: AddressFormStack,
   },
   {
     mode: 'modal',

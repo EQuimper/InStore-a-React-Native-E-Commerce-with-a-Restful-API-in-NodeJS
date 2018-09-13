@@ -75,6 +75,9 @@ const AddressFormStack = createStackNavigator(
     AddressForm: {
       getScreen: () => require('./AddressFormScreen').default,
     },
+    AutocompleteAddress: {
+      getScreen: () => require('./AutocompleteAddressScreen').default,
+    },
   },
   {
     navigationOptions: {

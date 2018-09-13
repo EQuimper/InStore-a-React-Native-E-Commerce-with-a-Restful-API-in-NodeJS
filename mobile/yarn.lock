@@ -2740,6 +2740,10 @@ locate-path@^2.0.0:
     p-locate "^2.0.0"
     path-exists "^3.0.0"
 
+lodash.debounce@^4.0.8:
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
+
 lodash.get@^4.4.2:
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
@@ -3560,7 +3564,7 @@ qs@^6.5.0:
   version "6.5.2"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
 
-query-string@^6.1.0:
+query-string@^6.0.0, query-string@^6.1.0:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/query-string/-/query-string-6.1.0.tgz#01e7d69f6a0940dac67a937d6c6325647aa4532a"
   dependencies:
@@ -3641,6 +3645,14 @@ react-native-gesture-handler@1.0.6:
     hoist-non-react-statics "^2.3.1"
     invariant "^2.2.2"
     prop-types "^15.5.10"
+
+react-native-google-autocomplete@0.1.5:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/react-native-google-autocomplete/-/react-native-google-autocomplete-0.1.5.tgz#a7e74e55ff8effcf9ea07d5d08e8652ee242f7af"
+  dependencies:
+    lodash.debounce "^4.0.8"
+    prop-types "^15.6.1"
+    query-string "^6.0.0"
 
 react-native-maps@0.21.0:
   version "0.21.0"

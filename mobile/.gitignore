@@ -2,3 +2,5 @@ node_modules/**/*
 .expo/*
 npm-debug.*
 TODO.md
+
+env.js

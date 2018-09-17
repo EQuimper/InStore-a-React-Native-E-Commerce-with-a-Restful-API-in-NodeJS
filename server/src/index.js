@@ -2,7 +2,7 @@ import express from 'express';
 
 import middlewaresConfig from './config/middlewares';
 import './config/db';
-import { CustomerRoutes } from './modules';
+import { CustomerRoutes, AddressRoutes } from './modules';
 
 const app = express();
 
@@ -13,6 +13,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/v1/customers', CustomerRoutes);
+app.use('/api/v1/addresses', AddressRoutes);
 
 app.listen(3000, err => {
   if (err) {

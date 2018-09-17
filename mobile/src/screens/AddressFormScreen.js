@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
-import { StatusBar, ScrollView, StyleSheet } from 'react-native';
+import {
+  StatusBar,
+  ScrollView,
+  StyleSheet,
+  ActivityIndicator,
+} from 'react-native';
 import { Box, Text } from 'react-native-design-utility';
-import { observer } from 'mobx-react/native';
+import { observer, inject } from 'mobx-react/native';
 import { observable, action } from 'mobx';
 
 import CloseBtn from '../commons/CloseBtn';
@@ -10,6 +15,7 @@ import Button from '../commons/Button';
 import { theme } from '../constants/theme';
 import { buildAddress } from '../utils/buildAddress';
 
+@inject('authStore')
 @observer
 class AddressFormScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -31,6 +37,9 @@ class AddressFormScreen extends Component {
   @observable
   address = null;
 
+  @observable
+  isSaving = false;
+
   goToSearch = () => {
     this.props.navigation.navigate('AutocompleteAddress', {
       searchAddress: this.searchAddress,
@@ -40,7 +49,6 @@ class AddressFormScreen extends Component {
   @action.bound
   searchAddress(value) {
     this.props.navigation.goBack(null);
-    console.log('value', value);
 
     const address = buildAddress(value);
 
@@ -51,8 +59,25 @@ class AddressFormScreen extends Component {
     this.address = address;
   }
 
+  @action.bound
+  async saveAddress() {
+    this.isSaving = true;
+    try {
+      await this.props.authStore.info.createAddress(this.address);
+      this.props.navigation.goBack(null);
+    } catch (error) {
+      console.log('error', error);
+    }
+  }
+
   render() {
-    console.log('this', this);
+    if (this.isSaving) {
+      return (
+        <Box f={1} bg="white" center>
+          <ActivityIndicator color={theme.color.green} size="large" />
+        </Box>
+      );
+    }
     return (
       <Box f={1} bg="white" p="sm">
         <StatusBar barStyle="dark-content" />
@@ -89,6 +114,7 @@ class AddressFormScreen extends Component {
             disabled={!this.address}
             disabledStyle={styles.buttonDisabled}
             style={styles.button}
+            onPress={this.saveAddress}
           >
             <Text bold color="white">
               Save

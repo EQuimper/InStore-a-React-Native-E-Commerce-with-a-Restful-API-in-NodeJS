@@ -18,7 +18,6 @@ class LocationItem extends Component {
   };
 
   render() {
-    console.log('location props', this.props);
     return (
       <TouchableOpacity onPress={this.handlePress}>
         <Box

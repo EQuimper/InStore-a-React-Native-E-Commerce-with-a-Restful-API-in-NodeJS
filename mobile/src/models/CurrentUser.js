@@ -29,16 +29,24 @@ export const CurrentUserModel = types
           .post({ data })
           .json();
 
-        if (typeof res.address === 'object') {
-          const address = UserAddressModel.create({
-            ...res.address,
-            geo: {
-              lng: get(res.address, ['geo', 'coords', 0]),
-              lat: get(res.address, ['geo', 'coords', 1]),
-            },
-          });
+        if (res.address) {
+          self.addresses.push(res.address);
+        }
+      } catch (error) {
+        throw error;
+      }
+    }),
 
-          self.addresses.push(address);
+    getAddresses: flow(function*() {
+      try {
+        const res = yield baseApi
+          .url('/addresses')
+          .auth(`Bearer ${self.auth.authToken}`)
+          .get()
+          .json();
+
+        if (Array.isArray(res.addresses)) {
+          self.addresses = res.addresses;
         }
       } catch (error) {
         throw error;

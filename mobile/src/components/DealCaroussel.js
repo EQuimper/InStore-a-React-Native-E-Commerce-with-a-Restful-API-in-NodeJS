@@ -71,6 +71,7 @@ class DealCaroussel extends PureComponent {
           showsHorizontalScrollIndicator={false}
           pagingEnabled
           ref={this.scrollView}
+          scrollEventThrottle={16}
           onScroll={this.onScroll}
         >
           {images.map((img, i) => (

@@ -7,7 +7,8 @@ import {
 } from 'react-native';
 import { Box, Text } from 'react-native-design-utility';
 import { observer, inject } from 'mobx-react/native';
-import { observable, action } from 'mobx';
+import { observable, action, computed } from 'mobx';
+import get from 'lodash.get';
 
 import CloseBtn from '../commons/CloseBtn';
 import Input from '../commons/Input';
@@ -17,28 +18,27 @@ import { buildAddress } from '../utils/buildAddress';
 
 @inject('authStore')
 @observer
-class AddressFormScreen extends Component {
-  static navigationOptions = ({ navigation }) => ({
-    title: 'Address',
-    headerLeft: (
-      <CloseBtn left size={25} onPress={() => navigation.goBack(null)} />
-    ),
-  });
-
+class AddressForm extends Component {
   @observable
-  streetName = '';
-
-  @observable
-  postalCode = '';
-
-  @observable
-  city = '';
-
-  @observable
-  address = null;
+  address = get(this.props, 'address', null);
 
   @observable
   isSaving = false;
+
+  @computed
+  get streetName() {
+    return get(this.address, 'street', '');
+  }
+
+  @computed
+  get city() {
+    return get(this.address, 'city', '');
+  }
+
+  @computed
+  get postalCode() {
+    return get(this.address, 'postalCode', '');
+  }
 
   goToSearch = () => {
     this.props.navigation.navigate('AutocompleteAddress', {
@@ -52,10 +52,6 @@ class AddressFormScreen extends Component {
 
     const address = buildAddress(value);
 
-    this.streetName = address.street;
-    this.postalCode = address.postalCode;
-    this.city = address.city;
-
     this.address = address;
   }
 
@@ -63,14 +59,15 @@ class AddressFormScreen extends Component {
   async saveAddress() {
     this.isSaving = true;
     try {
-      await this.props.authStore.info.createAddress(this.address);
-      this.props.navigation.goBack(null);
+      await this.props.save(this.address);
     } catch (error) {
       console.log('error', error);
     }
   }
 
   render() {
+    const { editMode } = this.props;
+
     if (this.isSaving) {
       return (
         <Box f={1} bg="white" center>
@@ -78,6 +75,7 @@ class AddressFormScreen extends Component {
         </Box>
       );
     }
+
     return (
       <Box f={1} bg="white" p="sm">
         <StatusBar barStyle="dark-content" />
@@ -117,9 +115,22 @@ class AddressFormScreen extends Component {
             onPress={this.saveAddress}
           >
             <Text bold color="white">
-              Save
+              {editMode ? 'Edit' : 'Save'}
             </Text>
           </Button>
+
+          {editMode && (
+            <Button
+              disabled={!this.address}
+              disabledStyle={styles.buttonDisabled}
+              style={styles.deleteButton}
+              onPress={this.props.deleteAddress}
+            >
+              <Text bold color="white">
+                Delete
+              </Text>
+            </Button>
+          )}
         </ScrollView>
       </Box>
     );
@@ -134,6 +145,11 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: theme.color.green,
   },
+  deleteButton: {
+    backgroundColor: theme.color.red,
+    borderColor: theme.color.red,
+    marginTop: 20,
+  },
 });
 
-export default AddressFormScreen;
+export default AddressForm;
